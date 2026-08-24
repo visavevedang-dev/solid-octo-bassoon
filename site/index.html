@@ -221,6 +221,7 @@
   .price-card .badge{position:absolute;top:-0.7rem;left:1.5rem;background:var(--gold);color:var(--gold-foreground);font-size:0.72rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:0.3rem 0.65rem;border-radius:999px;}
   .price-card .name{font-weight:800;font-size:1.1rem;margin-bottom:0.35rem;}
   .price-card .amount{font-size:1.9rem;font-weight:800;margin-bottom:0.15rem;}
+  .price-card .amount .price-star{color:var(--gold-deep);font-size:1.2rem;}
   .price-card .amount small{font-size:0.95rem;font-weight:600;color:var(--muted-foreground);}
   .price-card .desc{font-size:0.86rem;color:var(--muted-foreground);margin-bottom:1.4rem;min-height:2.6rem;}
   .price-card ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;margin-bottom:1.5rem;flex-grow:1;}
@@ -466,7 +467,7 @@
     <p class="lead-sub reveal">Chat is never gated. Storage and active-booking room grow as your studio does.</p>
     <span class="gst-note reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-      Prices shown include 18% GST — nothing extra added at checkout
+      Prices shown exclude GST — 18% GST applies if applicable and is added at checkout
     </span>
 
     <div class="price-cards">
@@ -485,7 +486,7 @@
       <div class="price-card featured reveal">
         <span class="badge">Most popular</span>
         <div class="name">Pro</div>
-        <div class="amount">&#8377;599 <small>/ mo</small></div>
+        <div class="amount">&#8377;599<span class="price-star">*</span> <small>/ mo</small></div>
         <div class="desc">For a working studio taking on weddings every month.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 30 active bookings</li>
@@ -497,7 +498,7 @@
 
       <div class="price-card reveal">
         <div class="name">Studio</div>
-        <div class="amount">&#8377;899 <small>/ mo</small></div>
+        <div class="amount">&#8377;899<span class="price-star">*</span> <small>/ mo</small></div>
         <div class="desc">For a busy season with no ceiling on active bookings.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited active bookings</li>
@@ -507,7 +508,7 @@
         <a class="btn btn-ghost-light" href="#top">Choose Studio</a>
       </div>
     </div>
-    <p class="price-note reveal">Billed monthly. Galleries are deleted immediately if a subscription lapses, so keep it active to keep client access live.</p>
+    <p class="price-note reveal">* Prices shown are not final — GST will be added at checkout if applicable. Billed monthly. Galleries are deleted immediately if a subscription lapses, so keep it active to keep client access live.</p>
   </div>
 </section>
 
