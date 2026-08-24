@@ -53,15 +53,6 @@
   ul{margin:0 0 0.9rem 1.2rem;color:var(--muted-foreground);}
   li{margin-bottom:0.45rem;}
   strong{color:var(--foreground);}
-  .callout{
-    background:var(--background-alt);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:1.1rem 1.3rem;
-    font-size:0.92rem;
-    color:var(--muted-foreground);
-    margin:1.5rem 0;
-  }
 
   footer{background:var(--dark-bg-2);color:var(--muted-foreground-dim);border-top:1px solid var(--dark-border);padding:2.2rem 0;font-size:0.85rem;}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;max-width:var(--max);}
@@ -106,7 +97,7 @@
     <h2>What we collect</h2>
     <ul>
       <li><strong>Account &amp; profile data</strong> — business name, contact info, and authentication details, managed through Clerk.</li>
-      <li><strong>Booking data</strong> — couple names, venue, dates, and budget notes you enter or that are extracted from pasted inquiry text. This currently lives on your device; it is not yet synced to a cloud backup (see the note below).</li>
+      <li><strong>Booking data</strong> — couple names, venue, dates, and budget notes you enter or that are extracted from pasted inquiry text. This syncs automatically to the cloud and can be restored if you reinstall the app or switch devices.</li>
       <li><strong>Chat messages</strong> — messages exchanged between photographer and client through a booking's chat thread, capped at 5,000 characters per message.</li>
       <li><strong>Gallery photos</strong> — images you upload for a booking, stored on our object storage provider (Cloudflare R2) and shared with your client via a private link or QR code.</li>
       <li><strong>Identity verification data</strong> — if you opt into the Verified Badge, your ID document and a liveness selfie are processed by our verification provider (Didit) during that flow. We store only a one-way hash of your identity reference and the resulting verification status — never the raw document or biometric data.</li>
@@ -114,16 +105,12 @@
       <li><strong>Subscription &amp; billing data</strong> — your plan tier and subscription status, synced from Google Play Billing via RevenueCat. We do not process or store raw payment card details ourselves.</li>
     </ul>
 
-    <div class="callout">
-      <strong>Current limitation, stated plainly:</strong> booking and pipeline data is stored locally on your device today and is not yet backed up to the cloud. If you lose or reset your device before this ships, that data cannot be recovered by us. Cloud backup is a near-term roadmap priority.
-    </div>
-
     <h2>How we use it</h2>
     <ul>
       <li>To operate the booking pipeline, client chat, and gallery delivery features you use directly.</li>
       <li>To enforce your plan's active-booking limits and gallery storage quota.</li>
       <li>To display your Verified Badge status on your public Discover profile, if you've completed verification.</li>
-      <li>To keep a delivered gallery accessible to your client for 30 days after a subscription lapses, before it is permanently deleted.</li>
+      <li>To back up and sync your booking and pipeline data across devices and reinstalls.</li>
     </ul>
 
     <h2>Who we share it with</h2>
@@ -143,14 +130,14 @@
     <ul>
       <li>Deleting your account removes your chat threads, messages, attachments, and identity-verification records.</li>
       <li>Payment records are kept separately for as long as required by tax and legal obligations, even after account deletion.</li>
-      <li>Gallery photos are deleted when a gallery is removed manually, or automatically 30 days after a subscription lapses.</li>
+      <li>Gallery photos are deleted when a gallery is removed manually, or immediately if the subscription tied to it lapses.</li>
     </ul>
 
     <h2>Security</h2>
     <p>Access to bookings, chat, and galleries is tied to your authenticated identity — never to a client-supplied or request-supplied value. Identity and phone references are stored as one-way hashes rather than raw values. Administrative and webhook checks use constant-time comparison to prevent timing-based attacks.</p>
 
     <h2>Contact us</h2>
-    <p>Questions about this policy or a request to delete your data can be sent to <a href="mailto:support@framiostudio.online">support@framiostudio.online</a>.</p>
+    <p>Questions about this policy or a request to delete your data can be sent to <a href="mailto:support@slancio.site">support@slancio.site</a>.</p>
   </div>
 </main>
 
