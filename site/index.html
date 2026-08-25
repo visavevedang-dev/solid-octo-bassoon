@@ -250,7 +250,8 @@
   .price-card li svg{flex-shrink:0;width:18px;height:18px;margin-top:0.1rem;color:var(--success);}
   .price-card li.unavailable{color:var(--muted-foreground);}
   .price-card li.unavailable svg{color:var(--muted-foreground-dim);}
-  .price-note{font-size:0.85rem;color:var(--muted-foreground);max-width:60ch;}
+  .price-note{font-size:0.85rem;color:var(--muted-foreground);max-width:60ch;margin-bottom:0.6rem;}
+  .price-note:last-child{margin-bottom:0;}
 
   /* ================= FINAL CTA ================= */
   .final{background:var(--dark-bg);color:var(--dark-foreground);text-align:center;padding:clamp(3.5rem,10vw,6rem) 0;position:relative;overflow:hidden;}
@@ -406,7 +407,7 @@
         <div class="glow" aria-hidden="true"></div>
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.7"/><path d="M21 16l-5.5-5.5L9 17"/></svg></div>
         <h3>Deliver the wedding, not a zip file.</h3>
-        <p>Hand over a QR code, and the couple views and downloads from a private gallery — no account needed on their end. 100GB on Pro, 150GB on Studio.</p>
+        <p>Hand over a QR code, and the couple views and downloads from a private gallery — no account needed on their end. 50GB on Pro, 100GB on Studio, with add-on storage available if a season needs more.</p>
         <span class="foot">Galleries</span>
       </div>
       <div class="fcard reveal">
@@ -436,7 +437,7 @@
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3>Flat, transparent pricing</h3>
-        <p>One monthly price per tier, storage included. No metered per-GB surprises, no hidden add-on fees on top of your tier.</p>
+        <p>One monthly price per tier, generous storage included. No metered per-GB surprises — extra storage is available as an explicit add-on if you ever need it, never an automatic charge.</p>
       </div>
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -512,7 +513,7 @@
         <div class="desc">For a working studio taking on weddings every month.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 30 active bookings</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100GB gallery storage</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 50GB gallery storage</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Client chat included</li>
         </ul>
         <a class="btn btn-gold" href="#top">Choose Pro</a>
@@ -524,12 +525,13 @@
         <div class="desc">For a busy season with no ceiling on active bookings.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited active bookings</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 150GB gallery storage</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100GB gallery storage</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Client chat included</li>
         </ul>
         <a class="btn btn-ghost-light" href="#top">Choose Studio</a>
       </div>
     </div>
+    <p class="price-note reveal">Need more room? Additional storage beyond your plan's base allowance will be available as an add-on — pricing for that is still being finalized.</p>
     <p class="price-note reveal">* Prices shown are not final — GST will be added at checkout if applicable. Billed monthly. Galleries are deleted immediately if a subscription lapses, so keep it active to keep client access live.</p>
   </div>
 </section>
