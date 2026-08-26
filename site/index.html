@@ -243,6 +243,7 @@
   .price-card .name{font-weight:800;font-size:1.1rem;margin-bottom:0.35rem;}
   .price-card .amount{font-size:1.9rem;font-weight:800;margin-bottom:0.15rem;}
   .price-card .amount .price-star{color:var(--gold-deep);font-size:1.2rem;}
+  .price-card .amount .local-price{display:block;font-size:0.85rem;font-weight:500;color:var(--muted-foreground);margin-top:0.2rem;}
   .price-card .amount small{font-size:0.95rem;font-weight:600;color:var(--muted-foreground);}
   .price-card .desc{font-size:0.86rem;color:var(--muted-foreground);margin-bottom:1.4rem;min-height:2.6rem;}
   .price-card ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;margin-bottom:1.5rem;flex-grow:1;}
@@ -509,7 +510,7 @@
       <div class="price-card featured reveal">
         <span class="badge">Most popular</span>
         <div class="name">Pro</div>
-        <div class="amount">&#8377;599<span class="price-star">*</span> <small>/ mo</small></div>
+        <div class="amount" data-price="pro">&#8377;599<span class="price-star">*</span> <small>/ mo</small></div>
         <div class="desc">For a working studio taking on weddings every month.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 30 active bookings</li>
@@ -521,7 +522,7 @@
 
       <div class="price-card reveal">
         <div class="name">Studio</div>
-        <div class="amount">&#8377;999<span class="price-star">*</span> <small>/ mo</small></div>
+        <div class="amount" data-price="studio">&#8377;999<span class="price-star">*</span> <small>/ mo</small></div>
         <div class="desc">For a busy season with no ceiling on active bookings.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited active bookings</li>
@@ -671,6 +672,8 @@
   }
 })();
 </script>
+
+<script src="currency-display.js" defer></script>
 
 </body>
 </html>
