@@ -4,13 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Slancio — Booking software for wedding &amp; event photographers</title>
-<meta name="description" content="Slancio replaces WhatsApp threads, spreadsheets, and Drive folders with one pipeline: inquiry to booking to gallery delivery. Built for independent wedding &amp; event photographers.">
+<meta name="description" content="Slancio replaces WhatsApp threads, spreadsheets, and Drive folders with one workspace: bookings, contracts, client chat, galleries, and client photo selection — built for wedding and event photographers.">
+<link rel="canonical" href="https://slancio.site/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slancio.site/">
+<meta property="og:site_name" content="Slancio">
 <meta property="og:title" content="Slancio — Booking software for wedding &amp; event photographers">
-<meta property="og:image" content="logo.png">
+<meta property="og:description" content="Slancio replaces WhatsApp threads, spreadsheets, and Drive folders with one workspace: bookings, contracts, client chat, galleries, and client photo selection.">
+<meta property="og:image" content="https://slancio.site/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Slancio — Booking software for wedding &amp; event photographers">
+<meta name="twitter:description" content="Bookings, contracts, client chat, galleries, and client photo selection — one workspace built for wedding and event photographers.">
+<meta name="twitter:image" content="https://slancio.site/logo.png">
 <link rel="icon" type="image/png" href="slancio-S-mark-transparent.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Slancio",
+  "url": "https://slancio.site/",
+  "logo": "https://slancio.site/logo.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Slancio",
+  "url": "https://slancio.site/"
+}
+</script>
 <style>
   :root{
     --background:#FAFAF8;
@@ -54,6 +80,7 @@
   .eyebrow{display:inline-block;font-weight:700;font-size:0.76rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--gold-deep);}
   .eyebrow.on-dark{color:var(--gold);}
   .tabular{font-variant-numeric:tabular-nums;}
+  .lead-sub{color:var(--muted-foreground);max-width:56ch;}
   :focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;}
   .on-dark :focus-visible{outline-color:var(--gold);}
 
@@ -86,6 +113,7 @@
 
   /* ================= HEADER ================= */
   header{background:rgba(13,15,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--dark-border);position:sticky;top:0;z-index:20;}
+  #how-it-works,#features,#photo-selection,#pricing{scroll-margin-top:84px;}
   header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-top:0.85rem;padding-bottom:0.85rem;}
   header nav{display:flex;gap:1.75rem;font-size:0.92rem;font-weight:600;color:var(--dark-foreground-dim);}
   header nav a{text-decoration:none;transition:color 0.15s ease;position:relative;padding-bottom:0.35rem;}
@@ -110,18 +138,44 @@
   @media (prefers-reduced-motion:reduce){ .hero .aurora{animation:none;} }
   .hero .s-watermark{position:absolute;top:-8%;right:-6%;width:56%;max-width:640px;opacity:0.07;pointer-events:none;transform:rotate(6deg);z-index:0;}
   .hero .wrap{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(2rem,5vw,4rem);align-items:center;position:relative;z-index:1;}
-  @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr;} .hero .art{order:-1;max-width:220px;margin:0 auto;} }
+  @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr;} .hero .art{order:-1;max-width:300px;margin:0 auto;} }
   .hero .eyebrow{margin-bottom:1.1rem;}
   .hero h1{font-size:clamp(2.35rem,5.2vw,3.85rem);margin-bottom:1.25rem;}
-  .hero p.lead{font-size:1.1rem;color:var(--dark-foreground-dim);max-width:46ch;margin-bottom:2rem;}
+  .hero p.lead{font-size:1.1rem;color:var(--dark-foreground-dim);max-width:48ch;margin-bottom:2rem;}
   .cta-row{display:flex;gap:0.9rem;flex-wrap:wrap;align-items:center;margin-bottom:1.6rem;}
   .meta-line{font-size:0.85rem;color:var(--muted-foreground-dim);}
   .meta-line b{color:var(--gold);font-weight:700;}
   .meta-line .sep{margin:0 0.55rem;opacity:0.6;}
-  .hero .art{position:relative;width:100%;max-width:340px;justify-self:center;animation:float-in 1s var(--ease) both;}
-  .hero .art img{width:100%;filter:drop-shadow(0 20px 60px rgba(255,210,31,0.18));}
-  @keyframes float-in{from{opacity:0;transform:scale(0.85) translateY(16px);}to{opacity:1;transform:none;}}
+  .hero .art{position:relative;width:100%;max-width:320px;justify-self:center;animation:float-in 1s var(--ease) both;}
+  @keyframes float-in{from{opacity:0;transform:scale(0.92) translateY(16px);}to{opacity:1;transform:none;}}
   @media (prefers-reduced-motion:reduce){ .hero .art{animation:none;} }
+
+  /* ---------- hero booking-stage demo (CSS-only, GPU-cheap) ---------- */
+  .booking-demo{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:calc(var(--radius) + 6px);padding:1.75rem 1.5rem;width:100%;box-shadow:0 24px 60px -20px rgba(0,0,0,0.55);}
+  .bd-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.5rem;}
+  .bd-name{font-weight:700;color:var(--dark-foreground);font-size:1rem;}
+  .bd-date{font-size:0.78rem;color:var(--dark-foreground-dim);}
+  .bd-stage-wrap{position:relative;height:2.7rem;margin-bottom:1.4rem;}
+  .bd-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--gold);color:var(--gold-foreground);font-weight:700;font-size:0.95rem;border-radius:8px;opacity:0;animation:bdStageCycle 8s var(--ease) infinite;animation-delay:calc(var(--i) * 2s);}
+  @keyframes bdStageCycle{
+    0%{opacity:0;transform:translateY(6px);}
+    8%{opacity:1;transform:none;}
+    19%{opacity:1;transform:none;}
+    25%{opacity:0;transform:translateY(-6px);}
+    100%{opacity:0;}
+  }
+  .bd-dots{display:flex;justify-content:center;gap:0.5rem;}
+  .bd-dot{width:7px;height:7px;border-radius:50%;background:var(--dark-border);animation:bdDotCycle 8s infinite;animation-delay:calc(var(--i) * 2s);}
+  @keyframes bdDotCycle{
+    0%,100%{background:var(--dark-border);}
+    8%,24%{background:var(--gold);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .bd-stage{animation:none;opacity:0;}
+    .bd-stage:last-child{opacity:1;}
+    .bd-dot{animation:none;background:var(--dark-border);}
+    .bd-dot:last-child{background:var(--gold);}
+  }
 
   /* ================= PROBLEM ================= */
   .problem{background:var(--background);padding:clamp(3.5rem,9vw,6rem) 0;}
@@ -206,6 +260,42 @@
   .fcard .foot{font-size:0.75rem;font-weight:700;letter-spacing:0.05em;color:var(--gold-deep);text-transform:uppercase;}
   @media (prefers-reduced-motion:reduce){ .fcard .icon-wrap svg *{stroke-dashoffset:0;transition:none;} .fcard{transition:none;} .fcard:hover{transform:none;} }
 
+  /* ================= PHOTO SELECTION SHOWCASE ================= */
+  .selection{background:var(--background-alt);padding:clamp(4rem,10vw,7rem) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .selection h2{font-size:clamp(1.9rem,3.8vw,2.6rem);margin:0.6rem 0 0.9rem;max-width:20ch;}
+  .selection-demo{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin:2.5rem 0 1.75rem;}
+  @media (max-width:760px){ .selection-demo{grid-template-columns:1fr;} .demo-arrow{transform:rotate(90deg);justify-self:center;} }
+  .demo-panel{background:var(--card);border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);padding:1.5rem;}
+  .demo-panel-head{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted-foreground);margin-bottom:1.1rem;}
+  .demo-dot{width:8px;height:8px;border-radius:50%;background:var(--muted-foreground-dim);}
+  .demo-dot.gold{background:var(--gold-deep);}
+  .photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-bottom:1.1rem;}
+  .photo-tile{position:relative;aspect-ratio:1;border-radius:10px;border:2px solid var(--border);background:linear-gradient(135deg, var(--background-alt), #E4E0D5);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted-foreground-dim);transition:border-color 0.2s ease, transform 0.15s ease;padding:0;}
+  .photo-tile svg{width:42%;height:42%;}
+  .photo-tile:hover{transform:scale(1.05);}
+  .photo-tile .tile-check{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;color:transparent;transition:all 0.2s ease;}
+  .photo-tile[aria-pressed="true"]{border-color:var(--gold);}
+  .photo-tile[aria-pressed="true"] .tile-check{background:var(--gold);border-color:var(--gold);color:var(--gold-foreground);}
+  @media (prefers-reduced-motion:reduce){ .photo-tile{transition:none;} .photo-tile:hover{transform:none;} }
+  .selection-count{font-weight:700;font-size:0.95rem;color:var(--foreground);}
+  .demo-arrow{color:var(--muted-foreground-dim);width:28px;height:28px;}
+  .photographer-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:100%;}
+  .readout-number{font-size:3rem;font-weight:800;color:var(--gold-deep);line-height:1;}
+  .readout-label{display:block;font-size:0.9rem;color:var(--muted-foreground);margin:0.3rem 0 0.9rem;}
+  .readout-hint{font-size:0.85rem;color:var(--muted-foreground-dim);}
+  .selection-note{font-size:0.85rem;color:var(--muted-foreground);max-width:64ch;margin-bottom:1.5rem;}
+
+  /* ================= CLIENT EXPERIENCE ================= */
+  .client-exp{background:var(--background);padding:clamp(3.5rem,9vw,6rem) 0;}
+  .client-exp h2{font-size:clamp(1.75rem,3.6vw,2.5rem);margin:0.6rem 0 0.9rem;max-width:20ch;}
+  .exp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-top:2.75rem;}
+  @media (max-width:760px){ .exp-steps{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto;} }
+  .exp-step{text-align:center;}
+  .exp-icon{width:56px;height:56px;border-radius:50%;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;color:var(--gold-deep);}
+  .exp-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .exp-step h3{font-size:1.05rem;margin-bottom:0.5rem;}
+  .exp-step p{font-size:0.92rem;color:var(--muted-foreground);}
+
   /* ================= TRUST ================= */
   .trust{background:var(--dark-bg);color:var(--dark-foreground);padding:clamp(3.5rem,9vw,6rem) 0;}
   .trust .intro{max-width:640px;margin-bottom:2.6rem;}
@@ -232,15 +322,16 @@
   /* ================= PRICING ================= */
   .pricing{background:var(--background-alt);padding:clamp(3.5rem,9vw,6rem) 0 clamp(4rem,10vw,6.5rem);border-top:1px solid var(--border);}
   .pricing h2{font-size:clamp(1.75rem,3.6vw,2.5rem);margin:0.6rem 0 0.75rem;max-width:18ch;}
-  .pricing > .wrap > p.lead-sub{color:var(--muted-foreground);max-width:56ch;margin-bottom:1rem;}
+  .pricing > .wrap > p.lead-sub{margin-bottom:1rem;}
   .gst-note{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;color:var(--gold-deep);background:rgba(122,94,0,0.08);border:1px solid rgba(122,94,0,0.2);border-radius:999px;padding:0.45rem 0.9rem;margin-bottom:2.4rem;}
-  .price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:1.75rem;}
+  .price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:1.75rem;align-items:stretch;}
   @media (max-width:860px){ .price-cards{grid-template-columns:1fr;max-width:420px;} }
   .price-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem 1.6rem;display:flex;flex-direction:column;transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease);}
   .price-card:hover{transform:translateY(-4px) scale(1.012);box-shadow:0 18px 40px -20px rgba(13,15,18,0.2);}
   .price-card.featured{border-color:var(--gold-deep);box-shadow:0 0 0 1px var(--gold-deep);position:relative;}
   .price-card .badge{position:absolute;top:-0.7rem;left:1.5rem;background:var(--gold);color:var(--gold-foreground);font-size:0.72rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:0.3rem 0.65rem;border-radius:999px;}
   .price-card .name{font-weight:800;font-size:1.1rem;margin-bottom:0.35rem;}
+  .price-card .best-for{font-size:0.8rem;color:var(--gold-deep);font-weight:600;margin-bottom:0.9rem;}
   .price-card .amount{font-size:1.9rem;font-weight:800;margin-bottom:0.15rem;}
   .price-card .amount .price-star{color:var(--gold-deep);font-size:1.2rem;}
   .price-card .amount .local-price{display:block;font-size:0.85rem;font-weight:500;color:var(--muted-foreground);margin-top:0.2rem;}
@@ -251,16 +342,17 @@
   .price-card li svg{flex-shrink:0;width:18px;height:18px;margin-top:0.1rem;color:var(--success);}
   .price-card li.unavailable{color:var(--muted-foreground);}
   .price-card li.unavailable svg{color:var(--muted-foreground-dim);}
-  .price-note{font-size:0.85rem;color:var(--muted-foreground);max-width:60ch;margin-bottom:0.6rem;}
+  .price-note{font-size:0.85rem;color:var(--muted-foreground);max-width:64ch;margin-bottom:0.6rem;}
   .price-note:last-child{margin-bottom:0;}
+  .price-note.callout{background:rgba(122,94,0,0.08);border:1px solid rgba(122,94,0,0.2);border-radius:var(--radius);padding:0.9rem 1.1rem;color:var(--foreground);max-width:none;}
 
   /* ================= FINAL CTA ================= */
   .final{background:var(--dark-bg);color:var(--dark-foreground);text-align:center;padding:clamp(3.5rem,10vw,6rem) 0;position:relative;overflow:hidden;}
   .final .s-watermark{position:absolute;bottom:-20%;left:50%;transform:translateX(-50%);width:70%;max-width:520px;opacity:0.06;pointer-events:none;}
   .final .wrap{position:relative;z-index:1;}
   .final .eyebrow{margin-bottom:1rem;}
-  .final h2{font-size:clamp(1.9rem,4vw,2.75rem);max-width:20ch;margin:0 auto 1rem;}
-  .final p{color:var(--dark-foreground-dim);max-width:44ch;margin:0 auto 2.2rem;}
+  .final h2{font-size:clamp(1.9rem,4vw,2.75rem);max-width:22ch;margin:0 auto 1rem;}
+  .final p{color:var(--dark-foreground-dim);max-width:52ch;margin:0 auto 2.2rem;}
 
   /* ================= FOOTER ================= */
   footer{background:var(--dark-card);color:var(--muted-foreground-dim);border-top:1px solid var(--dark-border);padding:3rem 0 2rem;}
@@ -289,7 +381,7 @@
     <nav aria-label="Primary">
       <a href="#how-it-works" data-section="how-it-works">How it works</a>
       <a href="#features" data-section="features">Features</a>
-      <a href="#trust" data-section="trust">Trust</a>
+      <a href="#photo-selection" data-section="photo-selection">Photo Selection</a>
       <a href="#pricing" data-section="pricing">Pricing</a>
     </nav>
     <a class="btn btn-gold" href="#pricing">View Pricing</a>
@@ -303,15 +395,32 @@
     <div>
       <span class="eyebrow on-dark">Booking software for wedding &amp; event photographers</span>
       <h1>Stop running your studio out of WhatsApp.</h1>
-      <p class="lead">Slancio turns a forwarded inquiry into a booked, chatted-with, and delivered wedding — one pipeline, no spreadsheet, no fifth app.</p>
+      <p class="lead">Slancio turns a forwarded inquiry into a booked, shot, and delivered wedding — with clients selecting their favorites right in the gallery. One workspace, no spreadsheet, no fifth app.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="#how-it-works">See how it works</a>
-        <a class="btn btn-ghost-dark" href="#features">Explore features</a>
+        <a class="btn btn-gold" href="#pricing">Start Your 30-Day Free Trial</a>
+        <a class="btn btn-ghost-dark" href="#how-it-works">See How Slancio Works</a>
       </div>
       <p class="meta-line"><b>Android and iOS</b><span class="sep">&middot;</span>Free to start, no card required</p>
     </div>
     <div class="art" aria-hidden="true">
-      <img src="logo.png" alt="" width="340" height="340">
+      <div class="booking-demo">
+        <div class="bd-header">
+          <span class="bd-name">Priya &amp; Rohan</span>
+          <span class="bd-date tabular">14 Feb</span>
+        </div>
+        <div class="bd-stage-wrap">
+          <span class="bd-stage" style="--i:0">Inquiry</span>
+          <span class="bd-stage" style="--i:1">Contract Sent</span>
+          <span class="bd-stage" style="--i:2">Booked</span>
+          <span class="bd-stage" style="--i:3">Delivered</span>
+        </div>
+        <div class="bd-dots">
+          <span class="bd-dot" style="--i:0"></span>
+          <span class="bd-dot" style="--i:1"></span>
+          <span class="bd-dot" style="--i:2"></span>
+          <span class="bd-dot" style="--i:3"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -399,6 +508,13 @@
       </div>
       <div class="fcard reveal">
         <div class="glow" aria-hidden="true"></div>
+        <div class="icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Every shoot detail, not just the date.</h3>
+        <p>A booking timeline, a shot list, and call notes travel with the booking — so nothing about the day lives only in your head.</p>
+        <span class="foot">Timeline &amp; shot list</span>
+      </div>
+      <div class="fcard reveal">
+        <div class="glow" aria-hidden="true"></div>
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 1 1-4-7.2M21 4v6h-6"/></svg></div>
         <h3>One link. No login. No fifth app for your client.</h3>
         <p>Every plan — including Free — gets a chat thread with the client, reachable from a plain shareable link.</p>
@@ -415,8 +531,68 @@
         <div class="glow" aria-hidden="true"></div>
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M7 3h10v18l-5-3-5 3V3z"/></svg></div>
         <h3>Contract templates, ready to send.</h3>
-        <p>Start from a booking-agreement template instead of a blank document, and track exactly who's been sent one from the pipeline itself.</p>
+        <p>A Simple Wedding Agreement, a Full Wedding Contract, or an Engagement Session Agreement — start from a template instead of a blank document, and track who's signed from the pipeline itself.</p>
         <span class="foot">Contracts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="selection" id="photo-selection">
+  <div class="wrap">
+    <span class="eyebrow reveal">Client Photo Selection &middot; Studio</span>
+    <h2 class="reveal">Stop asking clients to send photo numbers on WhatsApp.</h2>
+    <p class="lead-sub reveal">Clients open the gallery, tap the photos they love, and you see the exact selection — no screenshots, no "the 4th and 9th one from the beach set."</p>
+
+    <div class="selection-demo reveal">
+      <div class="demo-panel">
+        <div class="demo-panel-head"><span class="demo-dot"></span><span>Client's gallery</span></div>
+        <div class="photo-grid" id="photo-grid" role="group" aria-label="Demo photo gallery — click a photo to select it">
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 1"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 2"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 3"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 4"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 5"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 6"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 7"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button type="button" class="photo-tile" aria-pressed="false" aria-label="Photo 8"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+        <div class="selection-count" aria-live="polite"><span id="selection-count-text">0 photos selected</span></div>
+      </div>
+      <div class="demo-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="demo-panel photographer-panel">
+        <div class="demo-panel-head"><span class="demo-dot gold"></span><span>Your view</span></div>
+        <span class="readout-number tabular" id="readout-number" aria-live="polite">0</span>
+        <span class="readout-label">photos selected</span>
+        <p class="readout-hint">Ready to export the moment your client is done.</p>
+      </div>
+    </div>
+
+    <p class="selection-note reveal">Try clicking a few photos above — that's the whole client experience, and it needs no login. Photo Selection is included in your 30-day Pro trial. After the trial, it's a Studio feature.</p>
+    <a class="btn btn-gold reveal" href="#pricing">Try it free</a>
+  </div>
+</section>
+
+<section class="client-exp">
+  <div class="wrap">
+    <span class="eyebrow reveal">The client experience</span>
+    <h2 class="reveal">Your clients don't need another app.</h2>
+    <p class="lead-sub reveal">Send a link. They open it. That's it — no download, no signup, no password to remember before the wedding.</p>
+    <div class="exp-steps">
+      <div class="exp-step reveal">
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 005.66 0l2-2a4 4 0 00-5.66-5.66l-1 1M14 10a4 4 0 00-5.66 0l-2 2a4 4 0 005.66 5.66l1-1"/></svg></div>
+        <h3>Link or QR code</h3>
+        <p>Share a gallery or chat link directly, or hand them a code to scan at the studio.</p>
+      </div>
+      <div class="exp-step reveal">
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18M7 6h.01M10 6h.01"/></svg></div>
+        <h3>Opens in any browser</h3>
+        <p>No app store, no account to create — the link just opens.</p>
+      </div>
+      <div class="exp-step reveal">
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.7"/><path d="M21 16l-5.5-5.5L9 17"/></svg></div>
+        <h3>Gallery, chat &amp; selection</h3>
+        <p>Everything they need to see, ask, and choose lives on that one page.</p>
       </div>
     </div>
   </div>
@@ -433,7 +609,7 @@
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3>Verified Badge for your profile</h3>
-        <p>Optional ID + liveness verification appears as a public trust badge — one more reason a stranger booking you for their wedding day says yes.</p>
+        <p>Optional ID + liveness verification appears as a public trust badge on Studio profiles — one more reason a stranger booking you for their wedding day says yes.</p>
       </div>
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -453,7 +629,7 @@
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m14.5-6.5l-2 2M8.5 15.5l-2 2m0-11l2 2m7 7l2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.6"/></svg>
         <h3>Built for this job, not retrofitted</h3>
-        <p>No generic CRM fields to ignore. Every screen — pipeline, chat, gallery — maps to a step you already go through on a wedding booking.</p>
+        <p>No generic CRM fields to ignore. Every screen — pipeline, chat, gallery, selection — maps to a step you already go through on a wedding booking.</p>
       </div>
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -473,6 +649,10 @@
         <p>The gallery is deleted as soon as the subscription lapses, so renew before that happens if you want to keep it accessible to your client.</p>
       </details>
       <details>
+        <summary>What happens to Photo Selection after my Pro trial ends?<span class="plus">+</span></summary>
+        <p>Photo Selection is available for the full 30 days of your Pro trial. After that, it's a Studio feature — upgrade any time to keep it for your clients.</p>
+      </details>
+      <details>
         <summary>Is Slancio available on iOS?<span class="plus">+</span></summary>
         <p>Yes — Slancio is available on both Android and iOS.</p>
       </details>
@@ -488,7 +668,7 @@
   <div class="wrap">
     <span class="eyebrow reveal">Pricing</span>
     <h2 class="reveal">Three tiers, priced for a studio of one.</h2>
-    <p class="lead-sub reveal">Chat is never gated. Storage and active-booking room grow as your studio does.</p>
+    <p class="lead-sub reveal">Chat is never gated. Capability grows with the tier — Studio's biggest difference isn't the storage, it's Photo Selection and your Verified Badge.</p>
     <span class="gst-note reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       Prices shown exclude GST — 18% GST applies if applicable and is added at checkout
@@ -497,12 +677,14 @@
     <div class="price-cards">
       <div class="price-card reveal">
         <div class="name">Free</div>
+        <div class="best-for">For getting your first bookings organized</div>
         <div class="amount">&#8377;0</div>
-        <div class="desc">Get your pipeline and client chat running before you pay anything.</div>
+        <div class="desc">Core business management, a simple agreement, and client chat — no card required.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 3 active bookings</li>
-          <li class="unavailable"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> No client gallery</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Simple Wedding Agreement</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Client chat included</li>
+          <li class="unavailable"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> No client gallery</li>
         </ul>
         <a class="btn btn-ghost-light" href="#top">Start free</a>
       </div>
@@ -510,28 +692,35 @@
       <div class="price-card featured reveal">
         <span class="badge">Most popular</span>
         <div class="name">Pro</div>
+        <div class="best-for">For photographers building a professional workflow</div>
         <div class="amount" data-price="pro">&#8377;599<span class="price-star">*</span> <small>/ mo</small></div>
-        <div class="desc">For a working studio taking on weddings every month.</div>
+        <div class="desc">Directory listing, more storage, contracts, and an AI assistant for client questions.</div>
         <ul>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Photographer Directory Listing</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 50GB gallery storage + add-on packs</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 30 AI chatbot messages / month</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Full Wedding &amp; Engagement contracts</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 30 active bookings</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 50GB gallery storage</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Client chat included</li>
         </ul>
-        <a class="btn btn-gold" href="#top">Choose Pro</a>
+        <a class="btn btn-gold" href="#top">Start Your 30-Day Free Trial</a>
       </div>
 
       <div class="price-card reveal">
         <div class="name">Studio</div>
+        <div class="best-for">For photographers who want the complete client experience</div>
         <div class="amount" data-price="studio">&#8377;999<span class="price-star">*</span> <small>/ mo</small></div>
-        <div class="desc">For a busy season with no ceiling on active bookings.</div>
+        <div class="desc">Everything in Pro, plus the features that make clients feel like it's a premium studio.</div>
         <ul>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Client Photo Selection</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Verified Badge on your profile</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100 AI chatbot messages / month</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100GB gallery storage + add-on packs</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited active bookings</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100GB gallery storage</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Client chat included</li>
         </ul>
         <a class="btn btn-ghost-light" href="#top">Choose Studio</a>
       </div>
     </div>
+    <p class="price-note callout reveal">Your 30-day Pro trial includes Pro features, 10GB trial gallery storage, limited AI access, and Photo Selection. After the trial, Photo Selection is part of Studio.</p>
     <p class="price-note reveal">Need more room? Additional storage beyond your plan's base allowance will be available as an add-on — pricing for that is still being finalized.</p>
     <p class="price-note reveal">* Prices shown are not final — GST will be added at checkout if applicable. Billed monthly. Galleries are deleted immediately if a subscription lapses, so keep it active to keep client access live.</p>
   </div>
@@ -542,8 +731,8 @@
   <div class="wrap">
     <span class="eyebrow on-dark">Get started</span>
     <h2>Your next inquiry is already in your WhatsApp.</h2>
-    <p>Paste it into Slancio and watch it become frame one.</p>
-    <a class="btn btn-gold" href="#top">Get started free</a>
+    <p>Start your 30-day Pro trial — Pro features, 10GB trial gallery storage, limited AI access, and Photo Selection included. After the trial, Photo Selection is part of Studio.</p>
+    <a class="btn btn-gold" href="#pricing">Start Your 30-Day Free Trial</a>
   </div>
 </section>
 
@@ -555,7 +744,7 @@
           <img src="logo.png" alt="" width="30" height="30">
           <span>SLANCIO</span>
         </a>
-        <p>Booking, client chat, and gallery delivery for independent wedding &amp; event photographers.</p>
+        <p>Booking, client chat, galleries, and photo selection for independent wedding &amp; event photographers.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -563,8 +752,16 @@
           <ul>
             <li><a href="#how-it-works">How it works</a></li>
             <li><a href="#features">Features</a></li>
+            <li><a href="#photo-selection">Photo Selection</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#trust">Trust &amp; FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="guides/">Guides</a></li>
+            <li><a href="tools/wedding-photography-pricing-calculator.html">Pricing calculator</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -669,6 +866,27 @@
       });
     }, {threshold: 0.5});
     steps.forEach(function(s){ stepObserver.observe(s); });
+  }
+
+  /* photo selection interactive demo */
+  var grid = document.getElementById('photo-grid');
+  if(grid){
+    var tiles = grid.querySelectorAll('.photo-tile');
+    var countText = document.getElementById('selection-count-text');
+    var readout = document.getElementById('readout-number');
+    function updateSelectionCount(){
+      var n = grid.querySelectorAll('.photo-tile[aria-pressed="true"]').length;
+      countText.textContent = n + (n === 1 ? ' photo selected' : ' photos selected');
+      readout.textContent = n;
+    }
+    tiles.forEach(function(t){
+      t.addEventListener('click', function(){
+        var pressed = t.getAttribute('aria-pressed') === 'true';
+        t.setAttribute('aria-pressed', String(!pressed));
+        updateSelectionCount();
+      });
+    });
+    updateSelectionCount();
   }
 })();
 </script>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wedding Photography Pricing Calculator — Slancio</title>
+<meta name="description" content="A free calculator to work out a wedding photography package price from your coverage hours, editing time, fixed costs, and target profit margin.">
+<link rel="canonical" href="https://slancio.site/tools/wedding-photography-pricing-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slancio.site/tools/wedding-photography-pricing-calculator.html">
+<meta property="og:site_name" content="Slancio">
+<meta property="og:title" content="Wedding Photography Pricing Calculator">
+<meta property="og:description" content="Work out a wedding photography package price from coverage hours, editing time, costs, and margin.">
+<meta property="og:image" content="https://slancio.site/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../slancio-S-mark-transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://slancio.site/"},
+    {"@type":"ListItem","position":2,"name":"Pricing Calculator","item":"https://slancio.site/tools/wedding-photography-pricing-calculator.html"}
+  ]
+}
+</script>
+<style>
+  :root{
+    --background:#FAFAF8;--background-alt:#F1EFEA;--foreground:#0D0F12;
+    --muted-foreground:#57534C;--muted-foreground-dim:#837F76;--card:#FFFFFF;
+    --border:#E7E4DD;--gold:#FFD21F;--gold-deep:#7A5E00;--gold-foreground:#0D0F12;
+    --dark-bg:#0D0F12;--dark-card:#17191C;--dark-foreground:#F2F0EC;
+    --dark-foreground-dim:#A8A4A0;--dark-border:#282A2E;--radius:10px;--max:760px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--background);color:var(--foreground);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.6;}
+  a{color:var(--gold-deep);}
+  :focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);}
+  .logo{display:flex;align-items:center;gap:0.55rem;text-decoration:none;}
+  .logo img{width:28px;height:28px;border-radius:7px;}
+  .logo span{font-weight:800;letter-spacing:0.02em;font-size:1.05rem;color:var(--dark-foreground);}
+  header{background:var(--dark-bg);border-bottom:1px solid var(--dark-border);}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;max-width:900px;}
+  header a.back{font-size:0.9rem;color:var(--dark-foreground-dim);text-decoration:none;}
+  header a.back:hover{color:var(--gold);}
+  main{padding:clamp(3rem,7vw,4.5rem) 0 5rem;}
+  .breadcrumb{font-size:0.85rem;color:var(--muted-foreground-dim);margin-bottom:1.5rem;}
+  .breadcrumb a{color:var(--muted-foreground-dim);}
+  .eyebrow{display:block;font-weight:700;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:0.8rem;}
+  h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:0.7rem;}
+  .intro{color:var(--muted-foreground);max-width:64ch;margin-bottom:2.25rem;}
+  form{background:var(--card);border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);padding:1.75rem;display:grid;gap:1.1rem;margin-bottom:1.75rem;}
+  .field{display:flex;flex-direction:column;gap:0.35rem;}
+  .field label{font-size:0.88rem;font-weight:600;color:var(--foreground);}
+  .field .hint{font-size:0.78rem;color:var(--muted-foreground-dim);}
+  .field input{font:inherit;padding:0.6rem 0.75rem;border:1px solid var(--border);border-radius:8px;background:var(--background);color:var(--foreground);}
+  .field input:focus-visible{outline:2px solid var(--gold-deep);outline-offset:1px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+  @media (max-width:520px){ .two-col{grid-template-columns:1fr;} }
+  .result{background:var(--dark-bg);color:var(--dark-foreground);border-radius:calc(var(--radius) + 4px);padding:1.75rem;margin-bottom:2rem;}
+  .result-row{display:flex;justify-content:space-between;font-size:0.92rem;padding:0.5rem 0;border-bottom:1px solid var(--dark-border);}
+  .result-row:last-of-type{border-bottom:none;}
+  .result-row.total{font-size:1.3rem;font-weight:800;color:var(--gold);padding-top:0.9rem;margin-top:0.4rem;border-top:1px solid var(--dark-border);}
+  .result-label{color:var(--dark-foreground-dim);}
+  .result-row.total .result-label{color:var(--dark-foreground);}
+  .callout{background:var(--background-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.3rem;font-size:0.95rem;color:var(--foreground);margin-bottom:1.5rem;}
+  .callout a{font-weight:600;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;min-height:46px;padding:0.7rem 1.5rem;border-radius:var(--radius);text-decoration:none;background:var(--gold);color:var(--gold-foreground);}
+  p.note{font-size:0.8rem;color:var(--muted-foreground-dim);margin-top:1rem;}
+  footer{background:var(--dark-card);color:var(--muted-foreground-dim);border-top:1px solid var(--dark-border);padding:2.2rem 0;font-size:0.85rem;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;max-width:900px;}
+  footer a{color:var(--muted-foreground-dim);text-decoration:none;}
+  footer a:hover{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="../index.html" aria-label="Slancio home">
+      <img src="../logo.png" alt="" width="28" height="28">
+      <span>SLANCIO</span>
+    </a>
+    <a class="back" href="../index.html">&larr; Back to home</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; Pricing calculator</p>
+    <span class="eyebrow">Free tool</span>
+    <h1>Wedding Photography Pricing Calculator</h1>
+    <p class="intro">A starting point for pricing a wedding package based on your actual time and costs, not a guess. Adjust the numbers below — everything recalculates instantly, and nothing is sent anywhere.</p>
+
+    <form id="calc-form" onsubmit="return false;">
+      <div class="two-col">
+        <div class="field">
+          <label for="hours">Coverage hours</label>
+          <input type="number" id="hours" min="1" step="0.5" value="8">
+          <span class="hint">Hours you're contracted to shoot on the day</span>
+        </div>
+        <div class="field">
+          <label for="shootRate">Your shooting rate (&#8377;/hour)</label>
+          <input type="number" id="shootRate" min="0" step="50" value="1500">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label for="editRatio">Editing hours per coverage hour</label>
+          <input type="number" id="editRatio" min="0" step="0.1" value="1.5">
+          <span class="hint">Typical range is 1&ndash;2 hours of editing per hour shot</span>
+        </div>
+        <div class="field">
+          <label for="editRate">Your editing rate (&#8377;/hour)</label>
+          <input type="number" id="editRate" min="0" step="50" value="600">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label for="fixedCosts">Fixed costs for this booking (&#8377;)</label>
+          <input type="number" id="fixedCosts" min="0" step="500" value="4000">
+          <span class="hint">Travel, second shooter, gear wear, gallery storage, etc.</span>
+        </div>
+        <div class="field">
+          <label for="margin">Target profit margin (%)</label>
+          <input type="number" id="margin" min="0" max="90" step="1" value="25">
+        </div>
+      </div>
+    </form>
+
+    <div class="result" id="result" aria-live="polite">
+      <div class="result-row"><span class="result-label">Shooting cost</span><span id="r-shoot">&#8377;0</span></div>
+      <div class="result-row"><span class="result-label">Editing cost</span><span id="r-edit">&#8377;0</span></div>
+      <div class="result-row"><span class="result-label">Fixed costs</span><span id="r-fixed">&#8377;0</span></div>
+      <div class="result-row"><span class="result-label">Subtotal (your break-even)</span><span id="r-subtotal">&#8377;0</span></div>
+      <div class="result-row total"><span class="result-label">Suggested package price</span><span id="r-total">&#8377;0</span></div>
+    </div>
+
+    <p class="note">This is a starting point, not a rule — local market rates, your experience level, and demand for your dates all matter too. Treat the suggested price as a floor to negotiate up from, not a ceiling.</p>
+
+    <div class="callout">
+      Once you've priced the booking, the next step is managing it — inquiry to contract to delivery, without it living across five different apps. <a href="../index.html">See how Slancio's booking pipeline works &rarr;</a>
+    </div>
+
+    <a class="btn" href="../index.html#pricing">Start Your 30-Day Free Trial</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Slancio.</span>
+    <span><a href="../guides/">Guides</a> &middot; <a href="../index.html#pricing">Pricing</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ids = ['hours','shootRate','editRatio','editRate','fixedCosts','margin'];
+  var inputs = {};
+  ids.forEach(function(id){ inputs[id] = document.getElementById(id); });
+
+  function fmt(n){
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  }
+
+  function calculate(){
+    var hours = parseFloat(inputs.hours.value) || 0;
+    var shootRate = parseFloat(inputs.shootRate.value) || 0;
+    var editRatio = parseFloat(inputs.editRatio.value) || 0;
+    var editRate = parseFloat(inputs.editRate.value) || 0;
+    var fixedCosts = parseFloat(inputs.fixedCosts.value) || 0;
+    var margin = Math.min(parseFloat(inputs.margin.value) || 0, 90);
+
+    var shootCost = hours * shootRate;
+    var editCost = hours * editRatio * editRate;
+    var subtotal = shootCost + editCost + fixedCosts;
+    var total = margin < 90 ? subtotal / (1 - margin / 100) : subtotal;
+
+    document.getElementById('r-shoot').textContent = fmt(shootCost);
+    document.getElementById('r-edit').textContent = fmt(editCost);
+    document.getElementById('r-fixed').textContent = fmt(fixedCosts);
+    document.getElementById('r-subtotal').textContent = fmt(subtotal);
+    document.getElementById('r-total').textContent = fmt(total);
+  }
+
+  ids.forEach(function(id){
+    inputs[id].addEventListener('input', calculate);
+  });
+  calculate();
+})();
+</script>
+
+</body>
+</html>

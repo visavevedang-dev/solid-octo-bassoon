@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://slancio.site/sitemap.xml
