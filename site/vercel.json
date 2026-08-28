@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/admin",
-      "destination": "https://framio-visavevedang.replit.app/admin"
+      "destination": "https://framio-visavevedang.replit.app/api/admin"
     }
   ]
 }
