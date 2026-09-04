@@ -49,6 +49,7 @@
   h1{font-size:clamp(1.9rem,4vw,2.5rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:0.6rem;}
   .updated{font-size:0.88rem;color:var(--muted-foreground-dim);margin-bottom:2.5rem;}
   h2{font-size:1.25rem;font-weight:700;margin:2.4rem 0 0.9rem;letter-spacing:-0.01em;}
+  h3{font-size:1.02rem;font-weight:700;margin:1.6rem 0 0.6rem;letter-spacing:-0.005em;}
   p{color:var(--muted-foreground);margin-bottom:0.9rem;}
   ul{margin:0 0 0.9rem 1.2rem;color:var(--muted-foreground);}
   li{margin-bottom:0.45rem;}
@@ -76,25 +77,46 @@
   <div class="wrap">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated August 2026</p>
+    <p class="updated">Last updated September 2026</p>
 
-    <p>Slancio is a business management app for independent wedding and event photographers. This page explains what we collect, why, and how it's handled — for both photographers using the app and their clients, who interact with Slancio only through shared links and never create an account.</p>
+    <p>Slancio is a business management app for independent wedding and event photographers. This page explains what we collect, why, and how it's handled — for both photographers using the app and their clients, who interact with Slancio through shared links and, optionally, a lightweight client account.</p>
 
     <h2>Who this covers</h2>
     <ul>
       <li><strong>Photographers</strong> — the app's account holders, identified and authenticated through our identity provider (Clerk).</li>
-      <li><strong>Clients</strong> — couples and event clients who use a shared chat link or gallery link. Clients never sign up, log in, or install anything; access is scoped to a single unguessable link tied to their booking.</li>
+      <li><strong>Clients</strong> — couples and event clients who interact with a photographer through a shared chat or gallery link, or by claiming their booking with an Order ID to set up a lightweight client account (just a phone number and name — no app install required for link-only access).</li>
     </ul>
 
     <h2>What we collect</h2>
+    <p>What we collect depends on whether you're a photographer running your business through Slancio, or a client interacting with a photographer through a shared link or lightweight account.</p>
+
+    <h3>From photographers</h3>
     <ul>
-      <li><strong>Account &amp; profile data</strong> — business name, contact info, and authentication details, managed through Clerk.</li>
-      <li><strong>Booking data</strong> — couple names, venue, dates, and budget notes you enter or that are extracted from pasted inquiry text. This syncs automatically to the cloud and can be restored if you reinstall the app or switch devices.</li>
-      <li><strong>Chat messages</strong> — messages exchanged between photographer and client through a booking's chat thread, capped at 5,000 characters per message.</li>
-      <li><strong>Gallery photos</strong> — images you upload for a booking, stored on our object storage provider (Cloudflare R2) and shared with your client via a private link or QR code.</li>
-      <li><strong>Identity verification data</strong> — if you opt into the Verified Badge, your ID document and a liveness selfie are processed by our verification provider (Didit) during that flow. We store only a one-way hash of your identity reference and the resulting verification status — never the raw document or biometric data.</li>
+      <li><strong>Account &amp; profile data</strong> — name, age, phone number, studio name, and email (managed through Clerk), plus location, service area, bio, style tags, price range, and optional Instagram/Facebook handles.</li>
+      <li><strong>Unique username/ID</strong> — every photographer account has a mandatory unique username that identifies your public profile and bookings.</li>
+      <li><strong>Booking data</strong> — couple names, venue, dates, budget notes, and other client and booking information you enter or that's extracted from pasted inquiry text. This syncs automatically to the cloud and can be restored if you reinstall the app or switch devices.</li>
+      <li><strong>Chat messages</strong> — messages exchanged with clients and with the AI chatbot, capped at 5,000 characters per message and retained for 7 days before being automatically purged.</li>
+      <li><strong>Gallery photos &amp; videos</strong> — media you upload for a booking, stored on our object storage provider (Cloudflare R2) and shared with your client via a private link or QR code.</li>
+      <li><strong>Identity verification data</strong> — if you opt into the Verified Badge, your government ID document is submitted to our verification provider (Didit) during that flow. We store only a one-way hash of your identity reference and the resulting verification status — never the raw document itself.</li>
       <li><strong>Phone verification data</strong> — where phone verification is used, we store a one-way hash of the phone number, not the number itself.</li>
-      <li><strong>Subscription &amp; billing data</strong> — your plan tier and subscription status, synced from your app store subscription via RevenueCat. We do not process or store raw payment card details ourselves.</li>
+      <li><strong>Payment &amp; subscription data</strong> — your plan tier and subscription status, processed by Google Play, Apple, and RevenueCat. We never see or store your card details ourselves.</li>
+      <li><strong>Device push notification tokens</strong> — used to deliver booking and message notifications to your device.</li>
+      <li><strong>IP address &amp; usage logs</strong> — collected for security, abuse prevention, and diagnosing issues.</li>
+      <li><strong>Referral activity</strong> — if you take part in the referral program, we track referral links and their outcomes.</li>
+    </ul>
+
+    <h3>From clients</h3>
+    <ul>
+      <li><strong>Phone number &amp; name</strong> — provided when claiming a booking with an Order ID or setting up a lightweight client account.</li>
+      <li><strong>Reviews</strong> — any review you write about a photographer.</li>
+      <li><strong>Chat messages</strong> — messages with your photographer and with the AI chatbot.</li>
+      <li><strong>Photo access logs</strong> — a record of when a shared gallery is viewed.</li>
+    </ul>
+
+    <h3>From both photographers and clients</h3>
+    <ul>
+      <li><strong>Reported content</strong> — chat reports and other moderation flags, if something is reported.</li>
+      <li><strong>Account warnings &amp; suspension history</strong> — kept for photographer accounts only, as part of our moderation process.</li>
     </ul>
 
     <h2>How we use it</h2>
@@ -103,26 +125,34 @@
       <li>To enforce your plan's active-booking limits and gallery storage quota.</li>
       <li>To display your Verified Badge status on your public Discover profile, if you've completed verification.</li>
       <li>To back up and sync your booking and pipeline data across devices and reinstalls.</li>
+      <li>To generate AI chatbot responses to your questions and your clients' questions.</li>
     </ul>
 
     <h2>Who we share it with</h2>
     <p>We use a small set of specialist providers to run the app, and share only what each one needs to do its job:</p>
     <ul>
-      <li><strong>Clerk</strong> — authentication and identity.</li>
-      <li><strong>Cloudflare R2</strong> — gallery photo storage, uploaded directly from your device via a short-lived, single-use upload link.</li>
-      <li><strong>Didit</strong> — identity verification, only if you start the Verified Badge flow.</li>
-      <li><strong>RevenueCat</strong> — subscription management, layered on top of your app store's own billing system.</li>
+      <li><strong>Clerk</strong> — authentication, and phone/email verification.</li>
+      <li><strong>RevenueCat</strong> — subscription and payment status.</li>
+      <li><strong>Cloudflare R2</strong> — photo and video storage, uploaded directly from your device via a short-lived, single-use upload link.</li>
+      <li><strong>Google Gemini</strong> — processes AI chatbot conversations; message content is sent to Gemini to generate a response.</li>
+      <li><strong>Resend</strong> — sends transactional emails, like booking and account notifications.</li>
+      <li><strong>Didit</strong> — verifies KYC documents, only if you start the Verified Badge flow.</li>
+      <li><strong>Razorpay</strong> — processes payments for customers in India.</li>
+      <li><strong>Google Play &amp; Apple</strong> — handle subscription billing through their respective app stores.</li>
     </ul>
+    <p>We've also integrated Docuseal for e-signatures, but that feature is currently feature-flagged off and not yet live — no data is shared with Docuseal today.</p>
     <p>We do not sell your data or your clients' data to third parties.</p>
 
     <h2>Your client's data</h2>
-    <p>A client's chat messages and gallery access are scoped to a single private link tied to their booking. Either party can block a chat thread, which stops new messages without deleting history. Clients don't create an account with us and have no separate login to manage.</p>
+    <p>A client's chat messages and gallery access are scoped to a single private link tied to their booking. Clients can optionally claim their booking with an Order ID to set up a lightweight account using just a phone number and name — this is what lets you write reviews, keep chat history across devices, and track photo access, without a full sign-up. Either party can block a chat thread, which stops new messages without deleting history.</p>
 
     <h2>Data retention &amp; deletion</h2>
     <ul>
-      <li>Deleting your account removes your chat threads, messages, attachments, and identity-verification records.</li>
-      <li>Payment records are kept separately for as long as required by tax and legal obligations, even after account deletion.</li>
-      <li>Gallery photos are deleted when a gallery is removed manually, or immediately if the subscription tied to it lapses.</li>
+      <li><strong>Chat &amp; chatbot conversations</strong> — retained for 7 days, then automatically purged.</li>
+      <li><strong>Account deletion</strong> — starts a 14-day restore window; logging back in during that window cancels the deletion. After 14 days, your data is permanently deleted.</li>
+      <li><strong>Suspended accounts</strong> — you have a 7-day window after suspension to export your data before it's removed.</li>
+      <li><strong>Payment &amp; transaction records</strong> — kept for 7 years to meet tax and legal obligations, even after account deletion.</li>
+      <li><strong>Gallery photos</strong> — deleted when a gallery is removed manually, or immediately if the subscription tied to it lapses.</li>
     </ul>
 
     <h2>Security</h2>
@@ -132,7 +162,7 @@
     <p>If you're in the EU, data protection law gives you specific rights over your personal data. Here's what they mean in practice:</p>
     <ul>
       <li><strong>Right to access</strong> — you can request a copy of the personal data we hold about you.</li>
-      <li><strong>Right to erasure</strong> — you can ask us to delete your account and associated data, subject to the retention exceptions described above (e.g. payment records kept for legal compliance).</li>
+      <li><strong>Right to erasure</strong> — you can ask us to delete your account and associated data. Deletion follows the 14-day restore window and retention exceptions described above (e.g. payment records kept for legal compliance).</li>
       <li><strong>Right to rectification</strong> — you can correct inaccurate or incomplete personal data at any time.</li>
       <li><strong>Right to data portability</strong> — you can request your data in a structured, commonly-used format to move to another service.</li>
       <li><strong>Right to object to processing</strong> — you can object to us processing your data in certain circumstances, and we'll honor that unless we have a compelling legal basis to continue.</li>

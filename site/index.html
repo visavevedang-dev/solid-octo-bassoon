@@ -346,6 +346,31 @@
   .price-note:last-child{margin-bottom:0;}
   .price-note.callout{background:rgba(122,94,0,0.08);border:1px solid rgba(122,94,0,0.2);border-radius:var(--radius);padding:0.9rem 1.1rem;color:var(--foreground);max-width:none;}
 
+  /* ---- feature comparison table ---- */
+  .compare{margin-top:3rem;}
+  .compare h3{font-size:1.3rem;font-weight:800;letter-spacing:-0.01em;margin-bottom:0.5rem;}
+  .compare > p{font-size:0.9rem;color:var(--muted-foreground);max-width:64ch;margin-bottom:1.5rem;}
+  .compare-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .compare-scroll{overflow-x:auto;}
+  .compare-table{width:100%;min-width:640px;border-collapse:collapse;font-size:0.88rem;}
+  .compare-table th,.compare-table td{padding:0.75rem 1rem;text-align:center;border-bottom:1px solid var(--border);}
+  .compare-table thead th{background:var(--background-alt);font-weight:800;font-size:0.76rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--foreground);border-bottom:2px solid var(--border);white-space:nowrap;}
+  .compare-table th[scope="row"]{text-align:left;font-weight:600;font-size:0.87rem;color:var(--foreground);}
+  .compare-table thead th:first-child,
+  .compare-table tbody th[scope="row"]{position:sticky;left:0;background:var(--card);z-index:1;}
+  .compare-table thead th:first-child{background:var(--background-alt);text-align:left;}
+  .compare-table tbody tr:nth-child(even) td,
+  .compare-table tbody tr:nth-child(even) th[scope="row"]{background:var(--background);}
+  .compare-table tbody tr:last-child th,.compare-table tbody tr:last-child td{border-bottom:none;}
+  .compare-table .col-pro{background:rgba(255,210,31,0.07);}
+  .compare-table thead th.col-pro{background:rgba(255,210,31,0.14);position:relative;}
+  .compare-table .col-pro-tag{display:block;font-size:0.62rem;font-weight:800;letter-spacing:0.03em;color:var(--gold-deep);margin-top:0.2rem;text-transform:none;}
+  .compare-table td.yes svg,.compare-table td.no svg{width:16px;height:16px;}
+  .compare-table td.yes svg{color:var(--success);}
+  .compare-table td.no svg{color:var(--muted-foreground-dim);}
+  .compare-table td.muted{color:var(--muted-foreground-dim);font-size:0.82rem;}
+  @media (max-width:600px){ .compare-table{font-size:0.82rem;} .compare-table th,.compare-table td{padding:0.6rem 0.7rem;} }
+
   /* ================= FINAL CTA ================= */
   .final{background:var(--dark-bg);color:var(--dark-foreground);text-align:center;padding:clamp(3.5rem,10vw,6rem) 0;position:relative;overflow:hidden;}
   .final .s-watermark{position:absolute;bottom:-20%;left:50%;transform:translateX(-50%);width:70%;max-width:520px;opacity:0.06;pointer-events:none;}
@@ -609,7 +634,7 @@
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3>Verified Badge for your profile</h3>
-        <p>Optional ID + liveness verification appears as a public trust badge on Studio profiles — one more reason a stranger booking you for their wedding day says yes.</p>
+        <p>Optional ID + liveness verification appears as a public trust badge on your profile — one more reason a stranger booking you for their wedding day says yes.</p>
       </div>
       <div class="tcard reveal">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -668,7 +693,7 @@
   <div class="wrap">
     <span class="eyebrow reveal">Pricing</span>
     <h2 class="reveal">Three tiers, priced for a studio of one.</h2>
-    <p class="lead-sub reveal">Chat is never gated. Capability grows with the tier — Studio's biggest difference isn't the storage, it's Photo Selection and your Verified Badge.</p>
+    <p class="lead-sub reveal">Chat is never gated. Capability grows with the tier — Studio's biggest difference isn't the storage, it's Photo Selection and priority support.</p>
     <span class="gst-note reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       Prices shown exclude GST — 18% GST applies if applicable and is added at checkout
@@ -697,6 +722,7 @@
         <div class="desc">Directory listing, more storage, contracts, and an AI assistant for client questions.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Photographer Directory Listing</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Verified Badge on your profile</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 50GB gallery storage + add-on packs</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 30 AI chatbot messages / month</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Full Wedding &amp; Engagement contracts</li>
@@ -712,7 +738,7 @@
         <div class="desc">Everything in Pro, plus the features that make clients feel like it's a premium studio.</div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Client Photo Selection</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Verified Badge on your profile</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority support</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100 AI chatbot messages / month</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100GB gallery storage + add-on packs</li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited active bookings</li>
@@ -721,8 +747,53 @@
       </div>
     </div>
     <p class="price-note callout reveal">Your 30-day Pro trial includes Pro features, 10GB trial gallery storage, limited AI access, and Photo Selection. After the trial, Photo Selection is part of Studio.</p>
-    <p class="price-note reveal">Need more room? Additional storage beyond your plan's base allowance will be available as an add-on — pricing for that is still being finalized.</p>
+    <p class="price-note reveal">Need more room? Additional storage is available as an add-on on Pro and Studio: &#8377;100 for +50GB or &#8377;200 for +100GB, on top of your plan's base allowance.</p>
     <p class="price-note reveal">* Prices shown are not final — GST will be added at checkout if applicable. Billed monthly. Galleries are deleted immediately if a subscription lapses, so keep it active to keep client access live.</p>
+
+    <div class="compare reveal">
+      <h3>Compare every feature</h3>
+      <p>All 24 things that change between Free, Pro, and Studio — not just storage and price.</p>
+      <div class="compare-wrap">
+        <div class="compare-scroll">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Free</th>
+                <th scope="col" class="col-pro">Pro<span class="col-pro-tag">Most popular</span></th>
+                <th scope="col">Studio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Active bookings</th><td>3</td><td class="col-pro">30</td><td>Unlimited</td></tr>
+              <tr><th scope="row">Pipeline management</th><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Wedding-day timeline</th><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Shot list builder</th><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Client portal (client app access)</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Payment/deposit tracking</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Lead conflict detection</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Analytics &amp; reports</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Priority support</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Verified badge</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Custom branding</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Storage</th><td class="muted">No gallery</td><td class="col-pro">50GB base</td><td>100GB base</td></tr>
+              <tr><th scope="row">Storage add-on packs</th><td class="muted">N/A</td><td class="col-pro">&#8377;100/50GB, &#8377;200/100GB</td><td>&#8377;100/50GB, &#8377;200/100GB</td></tr>
+              <tr><th scope="row">AI chatbot messages / month</th><td>Lower limit</td><td class="col-pro">Mid limit</td><td>Higher / unlimited</td></tr>
+              <tr><th scope="row">Booking automation actions / month</th><td class="muted">N/A</td><td class="col-pro">30 / month</td><td>Unlimited</td></tr>
+              <tr><th scope="row">Custom contract templates / month</th><td>1 / month</td><td class="col-pro">5 / month</td><td>Unlimited</td></tr>
+              <tr><th scope="row">Preset contract templates</th><td>1 (Simple Wedding Agreement)</td><td class="col-pro">10 total</td><td>All 20</td></tr>
+              <tr><th scope="row">Photo selection tool</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Referral program</th><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Studio search priority (in directory)</th><td class="muted">N/A</td><td class="col-pro muted">No boost</td><td>Boosted ranking</td></tr>
+              <tr><th scope="row">Public directory listing</th><td class="no"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Chat with clients</th><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Mandatory unique username/ID</th><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+              <tr><th scope="row">Data export</th><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="col-pro yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="yes"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
